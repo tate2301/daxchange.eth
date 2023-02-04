@@ -19,11 +19,11 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 			<div class="flex flex-col gap-24">
 				<div class="w-full items-center justify-center min-h-[60vh] py-24">
 					<div class={"text-center max-w-xl mx-auto flex flex-col gap-32"}>
-						<p>Tatenda Christopher Chinyamakobvu</p>
-						<h1 class="text-5xl tracking-tighter font-semibold">
+						<p class="font-medium">Tatenda Christopher Chinyamakobvu</p>
+						<h1 class="text-5xl tracking-tighter text-zinc-900 font-serif">
 							Product designer, software builder. Internet maker.
 						</h1>
-						<p>
+						<p class="font-medium">
 							Selected work: 2019 - 2022
 						</p>
 					</div>
@@ -33,9 +33,10 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 						href="https://github.com/tate2301/paynow-react"
 						target="_blank"
 						rel="noopener"
+						class="flex flex-col gap-4"
 					>
 						<div
-						class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end bg-gray-50 shadow-lg rounded-xl overflow-hidden border hover:scale-105 transition-transform duration-200"
+						class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end overflow-hidden"
 						style="
 							background-image: url('/case/flocash.png');
 							background-size: cover;
@@ -43,10 +44,11 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 							background-position: center;
 						"
 						>
-						<div class="w-full p-4 bg-gray-100">
-							<h3 class="font-semibold">Paynow React</h3>
-							<p class="text-gray-600">React SDK for the Paynow Gateway</p>
 						</div>
+						
+						<div class="w-full py-4">
+							<h3 class="font-semibold">Zicheni</h3>
+							<p class="text-gray-600">Spend your crypto using virtual VISA cards</p>
 						</div>
 					</a>
 					
@@ -54,32 +56,35 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 						href="https://github.com/tate2301/react-stopwatch"
 						target="_blank"
 						rel="noopener"
+						class="flex flex-col gap-4"
  					>
 						<div
-						class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end bg-gray-50 shadow-lg hover:scale-105 transition-transform duration-200 rounded-xl overflow-hidden border"
-						style="
-							background-image: url('/case/interiors.png');
-							background-size: contain;
-							background-repeat: no-repeat;
-							background-position: top;
-						"
-						>
-						<div class="w-full p-4 bg-gray-100">
+							class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end overflow-hidden"
+							style="
+								background-image: url('/case/interiors.png');
+								background-size: contain;
+								background-repeat: no-repeat;
+								background-position: top;
+							"
+							>
+						</div>
+						
+						<div class="w-full py-4">
 							<h3 class="font-semibold">React Stopwatch</h3>
 							<p class="text-gray-600">
 							An illustration of implementing finite state-machines using
 							React Hooks.
 							</p>
 						</div>
-						</div>
 					</a>
 					<a
 						href="https://github.com/tate2301/react-skeleton"
 						target="_blank"
 						rel="noopener"
+						class="flex flex-col gap-4"
  					>
 						<div
-						class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end bg-gray-50 shadow-lg hover:scale-105 transition-transform duration-200 rounded-xl overflow-hidden border"
+						class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end overflow-hidden"
 						style="
 							background-image: url('/case/pacebar.png');
 							background-size: cover;
@@ -87,12 +92,13 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 							background-position: top;
 						"
 						>
-						<div class="w-full p-4 bg-gray-100">
+						</div>
+						
+						<div class="w-full py-4">
 							<h3 class="font-semibold">React Skeleton</h3>
 							<p class="text-gray-600">
 							Declarative skeleton generator for React
 							</p>
-						</div>
 						</div>
 					</a>
 					

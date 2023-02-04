@@ -15,45 +15,25 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			ul {
-				list-style-type: none;
-				padding: unset;
-			}
-			ul li {
-				display: flex;
-			}
-			ul li time {
-				flex: 0 0 130px;
-				font-style: italic;
-				color: #595959;
-			}
-			ul li a:visited {
-				color: #8e32dc;
-			}
-		</style>
 	</head>
 	<Body>
 		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<time datetime={post.frontmatter.pubDate}>
-									{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-										year: 'numeric',
-										month: 'short',
-										day: 'numeric',
-									})}
-								</time>
-								<a href={post.url}>{post.frontmatter.title}</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
+		<main class="py-12">
+			<section class="flex flex-col gap-8 max-w-xl">
+					<h1 class="text-3xl font-semibold">My thoughts, views and opinions</h1>
+					<ul class="flex flex-col gap-4">
+						{
+							posts.map((post) => (
+								<li>
+									<a href={post.url} class="flex flex-col gap-1">
+										<h3 class="text-zinc-900 font-medium">{post.frontmatter.title}</h3>
+										<p >{post.frontmatter.description}</p>
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</section>
 		</main>
 	</Body>
 </html>

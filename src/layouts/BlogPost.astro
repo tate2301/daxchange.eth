@@ -22,36 +22,48 @@ const {
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
-		<style>
-			.title {
-				font-size: 2em;
-				margin: 0.25em 0 0;
-			}
-			hr {
-				border-top: 1px solid #ddd;
-				margin: 1rem 0;
-			}
-		</style>
 	</head>
 
 	<Body>
 		<Header />
-		<main>
-			<article>
-				{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-				<h1 class="title">{title}</h1>
-				{pubDate && <time>{pubDate}</time>}
-				{
-					updatedDate && (
-						<div>
-							Last updated on <time>{updatedDate}</time>
+		<main class="py-12 flex flex-col gap-12 mx-auto">
+			<section>
+				{pubDate && <p>Published <time>{pubDate}</time></p>}
+				<h1 class="text-3xl font-semibold text-zinc-900">{title}</h1>
+				<p>{description}</p>
+			</section>
+			{heroImage && <img height={360} src={heroImage} alt="" class="w-full object-cover h-[360px] rounded-xl" />}
+
+			<section class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-24">
+				<article class="col-span-1 lg:col-span-2 max-w-prosec flex flex-col gap-12">
+					<slot />
+				</article>
+				<aside class="col-span-1">
+					<div class="rounded-xl bg-zinc-50 p-4 flex flex-col gap-8 shadow">
+						<div class="flex flex-col gap-2">
+							<p class="text-xl font-medium text-zinc-900">Weekly newsletter</p>
+							<p>
+								No spam. Just the latest releases and tips, 
+								interesting articles, and exclusive interviews 
+								in your inbox every week.
+							</p>
 						</div>
-					)
-				}
-				<hr />
-				<slot />
-			</article>
+						<form class="flex flex-col gap-4">
+							<div class="flex flex-col gap-2">
+								<input placeholder="Enter your email" name="email-address" type="email" class="w-full p-2 rounded bg-white border focus:border-orange-200">
+								<p class="text-sm">
+									Read about our 
+									<a href={"/privacy"} class="font-medium underline">privacy policy.</a>
+								</p>
+							</div>
+							<button class="p-2 w-full text-center rounded items-center bg-orange-600 text-white font-medium shadow">
+								Subscribe
+							</button>
+						</form>
+						
+					</div>
+				</aside>
+			</section>
 		</main>
-		<Footer />
 	</Body>
 </html>

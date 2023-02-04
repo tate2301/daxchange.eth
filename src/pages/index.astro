@@ -17,7 +17,7 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 	<Body>
 			<Header title={SITE_TITLE} />
 			<div class="flex flex-col gap-24">
-				<div class="w-full items-center justify-center min-h-[60vh] py-24 ">
+				<div class="w-full items-center justify-center min-h-[60vh] py-24">
 					<div class={"text-center max-w-xl mx-auto flex flex-col gap-32"}>
 						<p>Tatenda Christopher Chinyamakobvu</p>
 						<h1 class="text-5xl tracking-tighter font-semibold">
@@ -35,12 +35,12 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 						rel="noopener"
 					>
 						<div
-						class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end bg-gray-50"
+						class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end bg-gray-50 shadow-lg rounded-xl overflow-hidden border hover:scale-105 transition-transform duration-200"
 						style="
-							background-image: url('https://kamfeskaya.gumlet.io/assets/paynow-react.svg');
-							background-size: contain;
+							background-image: url('/case/flocash.png');
+							background-size: cover;
 							background-repeat: no-repeat;
-							background-position: top;
+							background-position: center;
 						"
 						>
 						<div class="w-full p-4 bg-gray-100">
@@ -56,9 +56,9 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 						rel="noopener"
  					>
 						<div
-						class="flex flex-col justify-end min-h-[400px] lg:min-h-[600px] bg-gray-50"
+						class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end bg-gray-50 shadow-lg hover:scale-105 transition-transform duration-200 rounded-xl overflow-hidden border"
 						style="
-							background-image: url('https://kamfeskaya.gumlet.io/assets/react-stopwatch.svg');
+							background-image: url('/case/interiors.png');
 							background-size: contain;
 							background-repeat: no-repeat;
 							background-position: top;
@@ -79,9 +79,9 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 						rel="noopener"
  					>
 						<div
-						class="flex flex-col justify-end min-h-[400px] lg:min-h-[600px] bg-gray-50"
+						class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end bg-gray-50 shadow-lg hover:scale-105 transition-transform duration-200 rounded-xl overflow-hidden border"
 						style="
-							background-image: url('https://kamfeskaya.gumlet.io/assets/react-skeleton.webp');
+							background-image: url('/case/pacebar.png');
 							background-size: cover;
 							background-repeat: no-repeat;
 							background-position: top;
@@ -130,7 +130,7 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 						>.
 					</p>
 				</div>
-				<div class="flex flex-col gap-8 max-w-xl">
+				<section class="flex flex-col gap-8 max-w-xl">
 					<h2 class="text-xl font-medium">Writing</h2>
 					<ul class="flex flex-col gap-4">
 						{
@@ -144,8 +144,8 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 							))
 						}
 					</ul>
-				</div>
-				<div class="flex flex-col gap-4 max-w-xl">
+				</section>
+				<section class="flex flex-col gap-4 max-w-xl">
 					<h2 class="text-xl font-medium">Bookmarks</h2>
 					<a href={"#"} class="flex flex-col gap-1">
 						<h3 class="text-zinc-900 font-medium">Bringing joy to digital products</h3>
@@ -161,7 +161,7 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 						<h3 class="text-zinc-900 font-medium">Using RainbowKit and wagmi to build Web3 apps</h3>
 						<p>Beautiful and seamless user experience for connecting wallets to your dApp</p>
 					</a>
-				</div>
+				</section>
 			</div>			
 		
 	</Body>

@@ -26,17 +26,9 @@ const {
 
   <Body>
     <Header />
-    <main class="py-12 flex flex-col gap-12 max-w-prose mx-auto">
-      <section class="flex flex-col gap-2 max-w-prose text-center">
-        {
-          pubDate && (
-            <p class="text-sm">
-              Published <time>{pubDate}</time>
-            </p>
-          )
-        }
-        <h1 class="text-5xl font-serif text-zinc-900">{title}</h1>
-        <p>{description}</p>
+    <main class="py-12 flex flex-col gap-12 mx-auto">
+      <section class="flex flex-col gap-2 max-w-prose">
+        <h1 class="text-5xl font-serif text-zinc-900">{description}</h1>
       </section>
       {
         heroImage && (
@@ -49,9 +41,11 @@ const {
         )
       }
 
-      <article class="mx-auto max-w-prose prose prose-zinc">
-        <slot />
-      </article>
+      <section class="flex gap-12 flex-row-reverse lg:flex-row">
+        <article class="max-w-prose flex flex-col gap-12 prose-zinc">
+          <slot />
+        </article>
+      </section>
     </main>
   </Body>
 </html>

@@ -1,174 +1,185 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
-import Body from '../components/Body.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import Body from "../components/Body.astro";
 
-const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
-	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
-).slice(0, 3);
+const posts = (await Astro.glob("./blog/*.{md,mdx}"))
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate).valueOf() -
+      new Date(a.frontmatter.pubDate).valueOf()
+  )
+  .slice(0, 3);
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<Body>
-			<Header title={SITE_TITLE} />
-			<div class="flex flex-col gap-24">
-				<div class="w-full items-center justify-center min-h-[60vh] py-24">
-					<div class={"text-center max-w-xl mx-auto flex flex-col gap-32"}>
-						<p class="font-medium">Tatenda Christopher Chinyamakobvu</p>
-						<h1 class="text-5xl tracking-tighter text-zinc-900 font-serif">
-							Product designer, software builder. Internet maker.
-						</h1>
-						<p class="font-medium">
-							Selected work: 2019 - 2022
-						</p>
-					</div>
-				</div>
-				<div class="flex flex-col gap-32">
-					<a
-						href="https://github.com/tate2301/paynow-react"
-						target="_blank"
-						rel="noopener"
-						class="flex flex-col gap-4"
-					>
-						<div
-						class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end overflow-hidden"
-						style="
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <Body>
+    <Header title={SITE_TITLE} />
+    <div class="flex flex-col gap-24">
+      <div class="w-full items-center justify-center min-h-[60vh] py-24">
+        <div class={"text-center max-w-xl mx-auto flex flex-col gap-32"}>
+          <p class="font-medium">Tatenda Christopher Chinyamakobvu</p>
+          <h1 class="text-5xl tracking-tighter text-zinc-900 font-serif">
+            Product designer, software builder. Internet maker.
+          </h1>
+          <p class="font-medium">Selected work: 2019 - 2022</p>
+        </div>
+      </div>
+      <div class="flex flex-col gap-32">
+        <a
+          href="https://github.com/tate2301/paynow-react"
+          target="_blank"
+          rel="noopener"
+          class="flex flex-col gap-4"
+        >
+          <div
+            class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end overflow-hidden"
+            style="
 							background-image: url('/case/flocash.png');
 							background-size: cover;
 							background-repeat: no-repeat;
 							background-position: center;
 						"
-						>
-						</div>
-						
-						<div class="w-full py-4">
-							<h3 class="font-semibold">Zicheni</h3>
-							<p class="text-gray-600">Spend your crypto using virtual VISA cards</p>
-						</div>
-					</a>
-					
-					<a
-						href="https://github.com/tate2301/react-stopwatch"
-						target="_blank"
-						rel="noopener"
-						class="flex flex-col gap-4"
- 					>
-						<div
-							class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end overflow-hidden"
-							style="
+          >
+          </div>
+
+          <div class="w-full py-4">
+            <h3 class="font-semibold">Zicheni</h3>
+            <p class="text-gray-600">
+              Spend your crypto using virtual VISA cards
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="https://github.com/tate2301/react-stopwatch"
+          target="_blank"
+          rel="noopener"
+          class="flex flex-col gap-4"
+        >
+          <div
+            class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end overflow-hidden"
+            style="
 								background-image: url('/case/interiors.png');
 								background-size: contain;
 								background-repeat: no-repeat;
 								background-position: top;
 							"
-							>
-						</div>
-						
-						<div class="w-full py-4">
-							<h3 class="font-semibold">React Stopwatch</h3>
-							<p class="text-gray-600">
-							An illustration of implementing finite state-machines using
-							React Hooks.
-							</p>
-						</div>
-					</a>
-					<a
-						href="https://github.com/tate2301/react-skeleton"
-						target="_blank"
-						rel="noopener"
-						class="flex flex-col gap-4"
- 					>
-						<div
-						class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end overflow-hidden"
-						style="
+          >
+          </div>
+
+          <div class="w-full py-4">
+            <h3 class="font-semibold">React Stopwatch</h3>
+            <p class="text-gray-600">
+              An illustration of implementing finite state-machines using React
+              Hooks.
+            </p>
+          </div>
+        </a>
+        <a
+          href="https://github.com/tate2301/react-skeleton"
+          target="_blank"
+          rel="noopener"
+          class="flex flex-col gap-4"
+        >
+          <div
+            class="col-span-1 min-h-[400px] lg:min-h-[600px] flex flex-col justify-end overflow-hidden"
+            style="
 							background-image: url('/case/pacebar.png');
 							background-size: cover;
 							background-repeat: no-repeat;
 							background-position: top;
 						"
-						>
-						</div>
-						
-						<div class="w-full py-4">
-							<h3 class="font-semibold">React Skeleton</h3>
-							<p class="text-gray-600">
-							Declarative skeleton generator for React
-							</p>
-						</div>
-					</a>
-					
-				</div>
-				<div class="max-w-xl">
-					<p class="text-gray-600 text-xl">
-						Zimbabwean product designer and frontend engineer living in the Harare.
-						Currently leading Product Engineering at Pagka, building tools to 
-						democraticize banking for people in developing countries.
-						During weekends I am building a startup dedicated to bring the 
-						best desks and utilities to your workspace, wherever you are.
-						<br><br>
-						I am open to collaborations and freelance projects. You can download my
-						<a
-							href="https://read.cv/kamfeskaya"
-							class="font-semibold underline text-zinc-900"
-							target="_blank"
-							rel="noopener"
-							>CV</a
-						>, invite me on
-						<a
-							href="https://www.upwork.com/freelancers/~015e4f92395120604b"
-							target="_blank"
-							rel="noopener"
-							class="font-semibold underline text-zinc-900"
-							>Upwork</a
-						>
-						or lets connect on
-						<a
-							href="https://twitter.com/daxchange"
-							target="_blank"
-							rel="noopener"
-							class="font-semibold underline text-zinc-900"
-							>Twitter</a
-						>.
-					</p>
-				</div>
-				<section class="flex flex-col gap-8 max-w-xl">
-					<h2 class="text-xl font-medium">Writing</h2>
-					<ul class="flex flex-col gap-4">
-						{
-							posts.map((post) => (
-								<li>
-									<a href={post.url} class="flex flex-col gap-1">
-										<h3 class="text-zinc-900 font-medium">{post.frontmatter.title}</h3>
-										<p>{post.frontmatter.description}</p>
-									</a>
-								</li>
-							))
-						}
-					</ul>
-				</section>
-				<section class="flex flex-col gap-4 max-w-xl">
-					<h2 class="text-xl font-medium">Bookmarks</h2>
-					<a href={"#"} class="flex flex-col gap-1">
-						<h3 class="text-zinc-900 font-medium">Bringing joy to digital products</h3>
-						<p>An exploration into the opportunities we can find for joy and delight.</p>
-					</a>
-					
-					<a href={"#"} class="flex flex-col gap-1">
-						<h3 class="text-zinc-900 font-medium">Everything I know about design systems</h3>
-						<p>It's been a while, but now it's time.</p>
-					</a>
-					
-					<a href={"#"} class="flex flex-col gap-1">
-						<h3 class="text-zinc-900 font-medium">Using RainbowKit and wagmi to build Web3 apps</h3>
-						<p>Beautiful and seamless user experience for connecting wallets to your dApp</p>
-					</a>
-				</section>
-			</div>			
-		
-	</Body>
+          >
+          </div>
+
+          <div class="w-full py-4">
+            <h3 class="font-semibold">React Skeleton</h3>
+            <p class="text-gray-600">
+              Declarative skeleton generator for React
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="max-w-xl">
+        <p class="text-gray-600 text-xl">
+          Zimbabwean product designer and frontend engineer living in the
+          Harare. Currently leading Product Engineering at Pagka, building tools
+          to democraticize banking for people in developing countries. During
+          weekends I am building a startup dedicated to bring the best desks and
+          utilities to your workspace, wherever you are.
+          <br /><br />
+          I am open to collaborations and freelance projects. You can download my
+          <a
+            href="https://read.cv/kamfeskaya"
+            class="font-semibold underline text-zinc-900"
+            target="_blank"
+            rel="noopener">CV</a
+          >, invite me on
+          <a
+            href="https://www.upwork.com/freelancers/~015e4f92395120604b"
+            target="_blank"
+            rel="noopener"
+            class="font-semibold underline text-zinc-900">Upwork</a
+          >
+          or lets connect on
+          <a
+            href="https://twitter.com/daxchange"
+            target="_blank"
+            rel="noopener"
+            class="font-semibold underline text-zinc-900">Twitter</a
+          >.
+        </p>
+      </div>
+      <section class="flex flex-col gap-8 max-w-xl">
+        <h2 class="text-xl font-serif">Writing</h2>
+        <ul class="flex flex-col gap-4">
+          {
+            posts.map((post) => (
+              <li>
+                <a href={post.url} class="flex flex-col gap-1">
+                  <h3 class="text-zinc-900 font-medium">
+                    {post.frontmatter.title}
+                  </h3>
+                  <p>{post.frontmatter.description}</p>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+      <section class="flex flex-col gap-4 max-w-xl">
+        <h2 class="text-xl font-serif">Bookmarks</h2>
+        <a href={"https://essays.uxdesign.cc"} class="flex flex-col gap-1">
+          <h3 class="text-zinc-900 font-medium">The case study factory</h3>
+          <p>
+            How the formulaic approach to case studies is numbing critical
+            thinking.
+          </p>
+        </a>
+
+        <a href={"#"} class="flex flex-col gap-1">
+          <h3 class="text-zinc-900 font-medium">
+            Everything I know about design systems
+          </h3>
+          <p>It's been a while, but now it's time.</p>
+        </a>
+
+        <a href={"#"} class="flex flex-col gap-1">
+          <h3 class="text-zinc-900 font-medium">
+            Using RainbowKit and wagmi to build Web3 apps
+          </h3>
+          <p>
+            Beautiful and seamless user experience for connecting wallets to
+            your dApp
+          </p>
+        </a>
+      </section>
+    </div>
+  </Body>
 </html>

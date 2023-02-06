@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "First post"
-description: "Lorem ipsum dolor sit amet"
+title: "8 reasons your website should run on Webflow"
+description: "A CMS that works for everyone"
 pubDate: "Jul 08 2022"
 heroImage: "/placeholder-hero.jpg"
 ---

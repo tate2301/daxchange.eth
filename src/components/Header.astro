@@ -1,19 +1,21 @@
 ---
-import HeaderLink from './HeaderLink.astro';
+import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header class="z-50 h-auto w-full border-b">
-	<nav class="py-4 flex gap-4 bg-white w-full justify-between">
-		<HeaderLink href="/">Halfstack</HeaderLink>
-		<div class="flex gap-2">
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/design">Work</HeaderLink>
-			<HeaderLink href="/snippets">Snippets</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-		</div>
-		<HeaderLink href="mailto:tatendachris@gmail.com">
-			Project request
-		</HeaderLink>
-
-	</nav>
+  <nav class="py-4 md:flex gap-4 bg-white w-full justify-between hidden">
+    <HeaderLink class={"font-medium"} href="/">Kamfeskaya</HeaderLink>
+    <div class="flex gap-2">
+      <HeaderLink href="/blog">Blog</HeaderLink>
+      <HeaderLink href="/work">Work</HeaderLink>
+      <HeaderLink href="/snippets">Snippets</HeaderLink>
+      <HeaderLink href="/about">About</HeaderLink>
+    </div>
+    <HeaderLink
+      class={"text-orange-600 font-medium"}
+      href="mailto:tatendachris@gmail.com"
+    >
+      Project request
+    </HeaderLink>
+  </nav>
 </header>

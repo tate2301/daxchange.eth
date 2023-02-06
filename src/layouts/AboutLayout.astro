@@ -27,19 +27,22 @@ const {
   <Body>
     <Header />
     <main class="py-12 flex flex-col gap-12 mx-auto">
-      <section class="flex flex-col gap-2 max-w-prose">
-        <h1 class="text-5xl font-serif text-zinc-900">{description}</h1>
-      </section>
-      {
-        heroImage && (
-          <img
-            height={360}
-            src={heroImage}
-            alt=""
-            class="w-full object-cover h-[360px] rounded-xl"
-          />
-        )
-      }
+      <div class="flex flex-col gap-4">
+        <p>
+          {
+            heroImage && (
+              <img
+                src={heroImage}
+                alt=""
+                class="w-16 aspect-square object-cover rounded-full shadow"
+              />
+            )
+          }
+        </p>
+        <section class="flex flex-col gap-2 max-w-prose">
+          <h1 class="text-5xl font-serif text-zinc-900">{description}</h1>
+        </section>
+      </div>
 
       <section class="flex gap-12 flex-row-reverse lg:flex-row">
         <article class="max-w-prose flex flex-col gap-12 prose-zinc">

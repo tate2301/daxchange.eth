@@ -19,7 +19,6 @@ const work = (await Astro.glob("./work/*.{md,mdx}")).sort(
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <Body>
-    <Header />
     <main class="py-12">
       <section class="flex flex-col gap-16 max-w-xl">
         <div class={"max-w-prose flex flex-col gap-32"}>

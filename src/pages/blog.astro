@@ -18,8 +18,8 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
+
   <Body>
-    <Header />
     <main class="py-12">
       <section class="flex flex-col gap-16 max-w-xl">
         <div class={"max-w-prose flex flex-col gap-32"}>

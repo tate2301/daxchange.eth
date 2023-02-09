@@ -25,9 +25,15 @@ const {
   </head>
 
   <Body>
-    <Header />
-    <main class="py-12 flex flex-col gap-12 max-w-prose mx-auto">
-      <section class="flex flex-col gap-2 max-w-prose text-center">
+    <main class="py-12 flex flex-col gap-12 max-w-prose">
+      <a href={"/"}>
+        <button
+          class="shadow-sm border bg-white font-medium px-3 py-1 rounded-full"
+        >
+          Go back</button
+        >
+      </a>
+      <section class="flex flex-col gap-2 max-w-prose">
         {
           pubDate && (
             <p class="text-sm">

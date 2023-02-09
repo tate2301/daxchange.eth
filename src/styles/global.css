@@ -11,6 +11,23 @@ body {
   overflow-wrap: break-word;
   line-height: 1.5;
   letter-spacing: -5%;
+
+  --grid-size: 24px;
+  --grid-size-half: 12px;
+  --transparent: #00000000;
+  background-size: var(--grid-size) var(--grid-size);
+  background-image: linear-gradient(
+      to right,
+      var(--transparent) var(--grid-size-half),
+      #f7f7f7 calc(var(--grid-size-half) + 1px),
+      var(--transparent) calc(var(--grid-size-half) + 1px)
+    ),
+    linear-gradient(
+      to bottom,
+      var(--transparent) var(--grid-size-half),
+      #f7f7f7 calc(var(--grid-size-half) + 1px),
+      var(--transparent) calc(var(--grid-size-half) + 1px)
+    );
 }
 nav a {
   margin-right: 10px;

@@ -1,5 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
+import MenuIcon from "./icons/MenuIcon.astro";
 const { pathname } = Astro.url;
 const isHome = pathname === "/";
 ---
@@ -11,20 +12,28 @@ const isHome = pathname === "/";
     isHome ? (
       <div class="h-10 aspect-square" />
     ) : (
-      <img
-        src={"/assets/avatar.jpg"}
-        class="aspect-square h-10 rounded-full drop-shadow border-2 border-white"
-        alt={"Tatenda Christopher Chinyamakobvu"}
-      />
+      <a href="/">
+        <img
+          src={"/assets/avatar.jpg"}
+          class="aspect-square h-10 rounded-full drop-shadow border-2 border-white"
+          alt={"Tatenda Christopher Chinyamakobvu"}
+        />
+      </a>
     )
   }
   <div
-    class="flex rounded-full border p-1 drop-shadow-sm bg-white backdrop-blur"
+    class="rounded-full border p-1 drop-shadow-sm bg-white backdrop-blur hidden md:flex"
   >
-    <HeaderLink href="/">Home</HeaderLink>
     <HeaderLink href="/blog">Blog</HeaderLink>
     <HeaderLink href="/work">Work</HeaderLink>
     <HeaderLink href="/about">About</HeaderLink>
   </div>
-  <div></div>
+  <div class="flex md:hidden">
+    <button
+      class="p-2 rounded-full backdrop-blur shadow-sm border bg-white hover:bg-zinc-50"
+    >
+      <MenuIcon />
+    </button>
+  </div>
+  <div class="hidden md:flex"></div>
 </header>

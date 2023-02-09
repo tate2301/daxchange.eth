@@ -1,10 +1,23 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
+const { pathname } = Astro.url;
+const isHome = pathname === "/";
 ---
 
 <header
-  class="h-auto w-full max-w-prose mx-auto flex justify-center items-center"
+  class="h-auto w-full max-w-5xl mx-auto flex justify-between items-center"
 >
+  {
+    isHome ? (
+      <div class="h-10 aspect-square" />
+    ) : (
+      <img
+        src={"/assets/avatar.jpg"}
+        class="aspect-square h-10 rounded-full drop-shadow border-2 border-white"
+        alt={"Tatenda Christopher Chinyamakobvu"}
+      />
+    )
+  }
   <div
     class="flex rounded-full border p-1 drop-shadow-sm bg-white backdrop-blur"
   >
@@ -13,4 +26,5 @@ import HeaderLink from "./HeaderLink.astro";
     <HeaderLink href="/work">Work</HeaderLink>
     <HeaderLink href="/about">About</HeaderLink>
   </div>
+  <div></div>
 </header>

@@ -1,0 +1,53 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import Body from "../components/Body.astro";
+
+// Use Astro.glob() to fetch all snippets, and then sort them by date.
+const snippets = (await Astro.glob("./snippets/*.{md,mdx}")).sort(
+  (a, b) =>
+    new Date(b.frontmatter.pubDate).valueOf() -
+    new Date(a.frontmatter.pubDate).valueOf()
+);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <Body>
+    <Header />
+    <main class="py-12">
+      <section class="flex flex-col gap-16 max-w-xl">
+        <div class={"max-w-prose flex flex-col gap-32"}>
+          <h1 class="text-5xl tracking-tighter text-zinc-900 font-serif">
+            Bit-sized code snippets to show your workmates
+          </h1>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {
+            snippets.map((post) => (
+              <li>
+                <a
+                  href={post.url}
+                  class="grid grid-cols-1 md:grid-cols-2 gap-8"
+                >
+                  <div class="col-span-1 bg-zinc-50 rounded overflow-hidden h-32" />
+                  <div class="col-span-1 flex flex-col gap-1 justify-center">
+                    <h3 class="text-zinc-900 font-medium">
+                      {post.frontmatter.title}
+                    </h3>
+                    <p>{post.frontmatter.description}</p>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+  </Body>
+</html>

@@ -29,6 +29,7 @@ body {
       var(--transparent) calc(var(--grid-size-half) + 1px)
     );
 }
+
 nav a {
   margin-right: 10px;
 }

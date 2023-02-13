@@ -12,9 +12,7 @@ const isActive = isMatchedPath || isChildPathActive;
 
 <a
   href={href}
-  class={` ${
-    isActive && "font-semibold bg-zinc-900 text-white"
-  } rounded-full py-1 px-3 ${className}`}
+  class={`rounded-full py-1 px-3 ${className}`}
   class:list={[className, { active: isActive }]}
   {...props}
 >

@@ -21,20 +21,9 @@ const isHome = pathname === "/";
       </a>
     )
   }
-  <div
-    class="rounded-full border p-1 drop-shadow-sm bg-white backdrop-blur hidden md:flex text-sm"
-  >
+  <div class="backdrop-blur hidden md:flex text-sm">
     <HeaderLink href="/blog">Writing</HeaderLink>
     <HeaderLink href="/work">Work</HeaderLink>
-    <HeaderLink href="/projects">Projects</HeaderLink>
-    <HeaderLink href="/gallery">Gallery</HeaderLink>
-  </div>
-  <div class="flex md:hidden">
-    <button
-      class="p-2 rounded-full backdrop-blur shadow-sm border bg-white hover:bg-zinc-50"
-    >
-      <MenuIcon />
-    </button>
   </div>
   <div class="hidden md:flex"></div>
 </header>

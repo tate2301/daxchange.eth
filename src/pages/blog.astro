@@ -21,9 +21,9 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
 
   <Body>
     <main class="py-12">
-      <section class="flex flex-col gap-16 max-w-xl">
-        <div class={"max-w-prose flex flex-col gap-32"}>
-          <h1 class="text-5xl tracking-tighter text-zinc-900 font-serif">
+      <section class="flex flex-col gap-16 max-w-prose">
+        <div class={" flex flex-col gap-32"}>
+          <h1 class="text-5xl tracking-tighter text-zinc-900 font-medium">
             Writing about tech, business and making furniture
           </h1>
         </div>

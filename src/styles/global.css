@@ -3,6 +3,25 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
+@font-face {
+  font-family: "PP Neue Montreal";
+  src: url("/assets/fonts/PPNeueMontreal-Regular.woff2") format("woff2"),
+    url("https://uploads-ssl.webflow.com/62fd28cdd386f6a9d130721f/62fd2f77021f121f91ff0f3b_PPNeueMontreal-Regular.woff")
+      format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PP Neue Montreal";
+  src: url("/assets/fonts/PPNeueMontreal-Medium.woff2") format("woff2"),
+    url("https://uploads-ssl.webflow.com/62fd28cdd386f6a9d130721f/62fd2fa29bfdf59940b8f4fe_PPNeueMontreal-Medium.woff")
+      format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   margin: auto;
   text-align: left;
@@ -28,6 +47,15 @@ body {
       #f7f7f7 calc(var(--grid-size-half) + 1px),
       var(--transparent) calc(var(--grid-size-half) + 1px)
     );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "PP Neue Montreal", sans-serif;
+  font-weight: 500 !important;
 }
 
 nav a {

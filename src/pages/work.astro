@@ -22,8 +22,10 @@ const work = (await Astro.glob("./work/*.{md,mdx}")).sort(
   <Body>
     <main class="py-12">
       <section class="flex flex-col gap-16 max-w-5xl">
-        <div class={"max-w-prose flex flex-col gap-32"}>
-          <h1 class="text-5xl tracking-tighter text-zinc-900 font-medium">
+        <div class={"flex flex-col py-32"}>
+          <h1
+            class="text-5xl lg:text-8xl tracking-tight text-zinc-900 font-medium"
+          >
             Top tier craft. I build everything with passion.
           </h1>
         </div>

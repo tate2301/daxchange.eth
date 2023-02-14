@@ -28,7 +28,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
           alt={"Tatenda Christopher Chinyamakobvu"}
         />
         <div>
-          <h1 class="font-semibold text-xl tracking-tighter text-zinc-900">
+          <h1 class="font-semibold text-xl tracking-tight text-zinc-900">
             Tatenda Christopher Chinyamakobvu
           </h1>
           <p>Product designer & frontend engineer</p>
@@ -74,7 +74,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
 
       <div class="flex flex-col gap-16">
         <div class="flex">
-          <h2 id="magic" class="text-xl font-semibold text-zinc-900">
+          <h2 id="magic" class="text-5xl font-medium text-zinc-900">
             <span class="magic-heading">Selected projects 2020 - 2022 ↓</span>
           </h2>
         </div>
@@ -104,7 +104,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
       </div>
 
       <section class="flex flex-col gap-8 max-w-prose">
-        <h2 class="text-xl font-semibold tracking-tighter text-zinc-900">
+        <h2 class="text-3xl font-medium tracking-tight text-zinc-900">
           Writing
         </h2>
         <ul class="flex flex-col gap-4">
@@ -121,28 +121,6 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
             ))
           }
         </ul>
-      </section>
-      <section class="flex flex-col gap-4 max-w-prose">
-        <h2 class="text-xl font-semibold tracking-tighter text-zinc-900">
-          Bookmarks
-        </h2>
-        <a href={"https://essays.uxdesign.cc"} class="flex flex-col gap-1">
-          <h3 class="text-zinc-900 font-medium">The case study factory</h3>
-          <p>
-            How the formulaic approach to case studies is numbing critical
-            thinking.
-          </p>
-        </a>
-
-        <a href={"https://www.rainbowkit.com/"} class="flex flex-col gap-1">
-          <h3 class="text-zinc-900 font-medium">
-            Using RainbowKit and wagmi to build Web3 apps
-          </h3>
-          <p>
-            Beautiful and seamless user experience for connecting wallets to
-            your dApp
-          </p>
-        </a>
       </section>
     </div>
   </Body>

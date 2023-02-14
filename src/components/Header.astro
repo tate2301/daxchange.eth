@@ -8,22 +8,23 @@ const isHome = pathname === "/";
 <header
   class="h-auto w-full max-w-5xl mx-auto flex justify-between items-center"
 >
-  {
-    isHome ? (
-      <div class="h-10 aspect-square" />
-    ) : (
-      <a href="/">
-        <img
-          src={"/assets/avatar.jpg"}
-          class="aspect-square h-10 rounded-full drop-shadow border-2 border-white"
-          alt={"Tatenda Christopher Chinyamakobvu"}
-        />
-      </a>
-    )
-  }
-  <div class="backdrop-blur flex text-sm">
+  <div>
+    {
+      isHome ? (
+        <div class="h-10 aspect-square" />
+      ) : (
+        <a href="/">
+          <img
+            src={"/assets/avatar.jpg"}
+            class="aspect-square h-10 rounded-full drop-shadow border-2 border-white"
+            alt={"Tatenda Christopher Chinyamakobvu"}
+          />
+        </a>
+      )
+    }
+  </div>
+  <div class="backdrop-blur flex">
     <HeaderLink href="/blog">Writing</HeaderLink>
     <HeaderLink href="/work">Work</HeaderLink>
   </div>
-  <div class="hidden md:flex"></div>
 </header>

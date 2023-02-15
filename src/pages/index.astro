@@ -28,7 +28,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
           alt={"Tatenda Christopher Chinyamakobvu"}
         />
         <div>
-          <h1 class="font-semibold text-xl tracking-tight text-zinc-900">
+          <h1 class="font-semibold text-xl text-zinc-900">
             Tatenda Christopher Chinyamakobvu
           </h1>
           <p>Product designer & frontend engineer</p>
@@ -74,7 +74,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
 
       <div class="flex flex-col gap-16">
         <div class="flex">
-          <h2 id="magic" class="text-5xl font-medium text-zinc-900">
+          <h2 id="magic" class="text-5xl max-w-xl font-medium text-zinc-900">
             <span class="magic-heading">Selected projects 2020 - 2022 ↓</span>
           </h2>
         </div>
@@ -87,7 +87,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
             amenities that are off-limits to cleaning instructions before you check-out.
           `}
           href="/work/pekugara"
-          image="/assets/pekugara/M1.jpg"
+          image="/assets/pekugara/M1.png"
         />
         <HomeProjectListing
           title="Base"
@@ -104,9 +104,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
       </div>
 
       <section class="flex flex-col gap-8 max-w-prose">
-        <h2 class="text-3xl font-medium tracking-tight text-zinc-900">
-          Writing
-        </h2>
+        <h2 class="text-3xl font-medium text-zinc-900">Writing</h2>
         <ul class="flex flex-col gap-4">
           {
             posts.map((post) => (

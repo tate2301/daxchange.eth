@@ -29,10 +29,8 @@ const {
 
   <Body>
     <main class="py-12 flex flex-col gap-32">
-      <section class="flex flex-col gap-8 py-24">
-        <h1
-          class="text-5xl lg:text-8xl font-semibold tracking-tight text-zinc-900"
-        >
+      <section class="flex flex-col gap-8 py-12 lg:py-24">
+        <h1 class="text-5xl max-w-xl font-semibold text-zinc-900">
           {description}
         </h1>
         <p>
@@ -47,21 +45,21 @@ const {
             height={360}
             src={heroImage}
             alt=""
-            class="w-full object-cover aspect-video rounded-xl shadow"
+            class="w-full object-cover aspect-square lg:aspect-video rounded-xl shadow"
           />
         )
       }
 
-      <section class="grid grid-cols-1 md:grid-cols-3">
-        <div class="col-span-1 flex gap-2 flex-col">
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="col-span-1 flex gap-1 flex-col">
           <p>Client</p>
           <p class="font-semibold text-zinc-900">{client}</p>
         </div>
-        <div class="col-span-1 flex gap-2 flex-col">
+        <div class="col-span-1 flex gap-1 flex-col">
           <p>Role</p>
           <p class="font-semibold text-zinc-900">{role}</p>
         </div>
-        <div class="col-span-1 flex gap-2 flex-col">
+        <div class="col-span-1 flex gap-1 flex-col">
           <p>Focus</p>
           <p class="font-semibold text-zinc-900">{focus}</p>
         </div>

@@ -119,10 +119,10 @@ const personal_projects = [
 
       <section class="flex flex-col gap-16">
         <h2 class="text-5xl font-medium text-zinc-900">Side projects</h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
           {
             personal_projects.map((post) => (
-              <li class="p-4 md:p-8 col-span-1 bg-zinc-50 rounded-xl overflow-hidden relative group shadow border border-white">
+              <div class="p-4 md:p-8 col-span-1 bg-zinc-50 rounded-xl overflow-hidden relative group shadow border border-white">
                 <div class="absolute h-full w-full" />
                 <a href={post.href} class="flex flex-col gap-8 relative">
                   <div class="w-16 h-16 border border-white shadow rounded-xl bg-white p-1">
@@ -143,11 +143,11 @@ const personal_projects = [
                     <p>{post.domain}</p>
                   </div>
                 </a>
-              </li>
+              </div>
             ))
           }
-          <li
-            class="p-4 md:p-8 col-span-2 bg-zinc-50 rounded-xl overflow-hidden relative group shadow border border-white"
+          <div
+            class="p-4 md:p-8 md:col-span-2 bg-zinc-50 rounded-xl overflow-hidden relative group shadow border border-white"
           >
             <div class="absolute h-full w-full"></div>
             <a href={"https://zicheni.io"} class="flex flex-col gap-8 relative">
@@ -175,8 +175,8 @@ const personal_projects = [
                 <p>zicheni.io</p>
               </div>
             </a>
-          </li>
-        </ul>
+          </div>
+        </div>
       </section>
     </div>
   </Body>

@@ -1,0 +1,60 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Body from "../components/Body.astro";
+
+export interface Props {
+  content: {
+    title: string;
+    description: string;
+    pubDate?: string;
+    updatedDate?: string;
+    heroImage?: string;
+    client?: string;
+    role?: string;
+    focus?: string;
+  };
+}
+
+const {
+  content: { title, description, client, role, focus, updatedDate, heroImage },
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title + " - Kamfeskaya"} description={description} />
+  </head>
+
+  <Body>
+    <main class="py-12 flex flex-col gap-32">
+      <section class="flex flex-col gap-8 py-12">
+        <h1 class="text-5xl max-w-xl font-semibold text-zinc-900">
+          {description}
+        </h1>
+        <p>
+          <span class="bg-zinc-100 rounded-full py-2 px-4 font-medium"
+            >{title}</span
+          >
+        </p>
+      </section>
+      {
+        heroImage && (
+          <img
+            height={360}
+            src={heroImage}
+            alt=""
+            class="w-full object-cover aspect-square lg:aspect-video rounded-xl shadow"
+          />
+        )
+      }
+
+      <article
+        class="mx-auto max-w-5xl prose prose-zinc prose-p:mb-2 prose-h1:mb-1 prose-h2:mb-1 prose-h3:mb-1 prose-h1:mt-16 prose-h2:mt-16 prose-h3:mt-16"
+      >
+        <slot />
+      </article>
+    </main>
+  </Body>
+</html>

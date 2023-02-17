@@ -23,13 +23,15 @@ const personal_projects = [
       "I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of.",
     href: "https://telescope.kamfeskaya.com",
     icon: "/projects/telescope.webp",
+    domain: "telescope.kamfeskaya.com",
   },
   {
     name: "Paynow React",
     description:
       "A React wrapper for the Paynow SDK allowing you to use Paynow on client-side",
-    href: "https://paynow-react.kamfeskaya.com",
+    href: "/projects/paynow-react",
     icon: "/projects/paynow-react.jpg",
+    domain: "github.com",
   },
 ];
 ---
@@ -142,7 +144,7 @@ const personal_projects = [
                   <div class="flex text-sm gap-2 items-center font-medium text-zinc-500">
                     <ExternalLinkIcon />
 
-                    <p>{post.href}</p>
+                    <p>{post.domain}</p>
                   </div>
                 </a>
               </li>
@@ -174,7 +176,7 @@ const personal_projects = [
               >
                 <ExternalLinkIcon />
 
-                <p>https://zicheni.io</p>
+                <p>zicheni.io</p>
               </div>
             </a>
           </li>

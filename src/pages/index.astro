@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import Body from "../components/Body.astro";
 import HomeProjectListing from "../components/HomeProjectListing.astro";
+import TickerCarousel from "../components/react/TickerCarousel";
 
 const posts = (await Astro.glob("./blog/*.{md,mdx}"))
   .sort(
@@ -104,7 +105,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
       </div>
 
       <section class="flex flex-col gap-8 max-w-prose">
-        <h2 class="text-3xl font-medium text-zinc-900">Writing</h2>
+        <h2 class="text-3xl font-medium text-zinc-900">Personal projects</h2>
         <ul class="flex flex-col gap-4">
           {
             posts.map((post) => (
@@ -120,6 +121,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
           }
         </ul>
       </section>
+      <TickerCarousel client:load />
     </div>
   </Body>
 </html>

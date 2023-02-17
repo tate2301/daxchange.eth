@@ -1,0 +1,15 @@
+---
+import XIcon from "./icons/XIcon.astro";
+---
+
+<div class="x-blanket">
+  <button
+    onclick={"back()"}
+    class="shadow-sm border bg-white font-medium p-2 rounded-full"
+  >
+    <XIcon />
+  </button>
+</div>
+<script is:inline>
+  const back = () => history.back();
+</script>

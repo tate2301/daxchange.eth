@@ -3,6 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Body from "../components/Body.astro";
+import ArticleBackButton from "../components/ArticleBackButton.astro";
 
 export interface Props {
   content: {
@@ -29,14 +30,14 @@ const {
 
   <Body>
     <main class="py-12 flex flex-col gap-32">
-      <section class="flex flex-col gap-8 py-12 lg:py-24">
+      <ArticleBackButton />
+
+      <section class="flex flex-col gap-8 py-12">
         <h1 class="text-5xl max-w-xl font-semibold text-zinc-900">
           {description}
         </h1>
         <p>
-          <span class="bg-zinc-100 rounded-full py-2 px-4 font-medium"
-            >{title}</span
-          >
+          <span class="tag">{title}</span>
         </p>
       </section>
       {

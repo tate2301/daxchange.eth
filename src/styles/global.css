@@ -61,3 +61,22 @@ h5 {
 .btn {
   @apply bg-blue-700 font-medium text-white rounded-xl shadow-xl border-2 text-sm border-white px-6 py-3;
 }
+
+.tag {
+  @apply bg-zinc-50 text-zinc-500 border-2 border-white shadow-lg rounded-full py-2 px-4 font-medium text-sm;
+}
+
+.fixed-center-horizontal {
+  @apply fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.x-blanket {
+  background: linear-gradient(
+    rgb(255, 255, 255) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  @apply fixed w-screen top-0 left-0 py-4 md:py-6 lg:py-8 flex justify-center z-0;
+}

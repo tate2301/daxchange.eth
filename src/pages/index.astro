@@ -7,6 +7,8 @@ import HomeProjectListing from "../components/HomeProjectListing.astro";
 import TickerCarousel from "../components/react/TickerCarousel";
 import LinkIcon from "../components/icons/LinkIcon.astro";
 import ExternalLinkIcon from "../components/icons/ExternalLinkIcon.astro";
+import ProjectsListItem from "../components/ProjectsListItem.astro";
+import { data } from "../lib/data";
 
 const posts = (await Astro.glob("./blog/*.{md,mdx}"))
   .sort(
@@ -15,25 +17,6 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
       new Date(a.frontmatter.pubDate).valueOf()
   )
   .slice(0, 3);
-
-const personal_projects = [
-  {
-    name: "Telescope",
-    description:
-      "I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of.",
-    href: "https://telescope.kamfeskaya.com",
-    icon: "/projects/telescope.webp",
-    domain: "telescope.kamfeskaya.com",
-  },
-  {
-    name: "Paynow React",
-    description:
-      "A React wrapper for the Paynow SDK allowing you to use Paynow on client-side",
-    href: "/projects/paynow-react",
-    icon: "/projects/paynow-react.jpg",
-    domain: "github.com",
-  },
-];
 ---
 
 <!DOCTYPE html>
@@ -42,7 +25,7 @@ const personal_projects = [
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <Body>
-    <div class="flex flex-col gap-16 md:gap-32">
+    <div class="flex flex-col gap-16">
       <div class={"w-full max-w-prose py-16 flex flex-col gap-8"}>
         <img
           src={"/assets/avatar.jpg"}
@@ -53,17 +36,19 @@ const personal_projects = [
           <h1 class="font-semibold text-xl text-zinc-900">
             Tatenda Christopher Chinyamakobvu
           </h1>
-          <p>Product designer & frontend engineer</p>
+          <p class="text-sm">Product designer & Developer</p>
         </div>
         <div class="prose prose-zinc">
           <p>
-            Zimbabwean product designer and frontend engineer living in Harare.
-            Currently leading the Product Engineering team at <a
+            Product designer and developer, currently leading the Product
+            Engineering team at <a
               href="https://pagka.framer.website/"
               class="font-medium text-zinc-900">Pagka</a
-            >, working to make student accommodation search easier. On weekends
-            I am building a startup to bring the best desks and utilities to
-            your workspace.
+            >, working to make student accommodation search easier.
+          </p>
+          <p>
+            On weekends I am building a startup to bring the best desks and
+            utilities to your workspace.
           </p>
           <p>
             I am open to collaborations and freelance projects. You can download
@@ -89,95 +74,15 @@ const personal_projects = [
           </a>
         </div>
       </div>
-
-      <div class="flex flex-col gap-16">
-        <div class="flex">
-          <h2 id="magic" class="text-5xl font-medium text-zinc-900">
-            <span class="magic-heading">Selected projects 2020 - 2022 ↓</span>
-          </h2>
+      <section class="flex flex-col gap-12">
+        <div>
+          <h2 class="text-xl font-semibold text-zinc-900">Featured projects</h2>
         </div>
-
-        <HomeProjectListing
-          title="Pekugara"
-          description={`An exclusive community for student accommodation seekers and providers.`}
-          href="/work/pekugara"
-          image="/assets/pekugara/M1.png"
-        />
-        <HomeProjectListing
-          title="Base"
-          description="Webflow Development, Advanced Animations, Custom Code"
-          href="/work/pekugara"
-          image="/assets/eslint/Banner.png"
-        />
-        <HomeProjectListing
-          title="Soterio"
-          description="BLE based COVID-19 contact tracing for Zimbabwean Universities."
-          href="/work/landing-pages"
-          image="/assets/littlebird/M8.jpg"
-        />
-      </div>
-
-      <section class="flex flex-col gap-16">
-        <h2 class="text-5xl font-medium text-zinc-900">Side projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-          {
-            personal_projects.map((post) => (
-              <div class="p-4 md:p-8 col-span-1 bg-zinc-50 rounded-xl overflow-hidden relative group shadow border border-white">
-                <div class="absolute h-full w-full" />
-                <a href={post.href} class="flex flex-col gap-8 relative">
-                  <div class="w-16 h-16 border border-white shadow rounded-xl bg-white p-1">
-                    <img
-                      src={post.icon}
-                      class="object-fit object-center w-full h-full"
-                    />
-                  </div>{" "}
-                  <div>
-                    <h3 class="text-zinc-900 font-medium text-xl">
-                      {post.name}
-                    </h3>
-                    <p class="line-clamp-2">{post.description}</p>
-                  </div>
-                  <div class="flex text-sm gap-2 items-center font-medium text-zinc-500">
-                    <ExternalLinkIcon />
-
-                    <p>{post.domain}</p>
-                  </div>
-                </a>
-              </div>
-            ))
-          }
-          <div
-            class="p-4 md:p-8 md:col-span-2 bg-zinc-50 rounded-xl overflow-hidden relative group shadow border border-white"
-          >
-            <div class="absolute h-full w-full"></div>
-            <a href={"https://zicheni.io"} class="flex flex-col gap-8 relative">
-              <div
-                class="w-16 h-16 border border-white shadow rounded-xl bg-white"
-              >
-                <img
-                  src={"/projects/saas-utils.png"}
-                  class="object-cover w-full h-full"
-                />
-              </div>
-              <div>
-                <h3 class="text-zinc-900 font-medium text-xl">Zicheni</h3>
-                <p class="line-clamp-2">
-                  The Swiss pocket knife for building, running and scaling your
-                  SaaS startup.
-                </p>
-              </div>
-
-              <div
-                class="flex text-sm gap-2 items-center font-medium text-zinc-500"
-              >
-                <ExternalLinkIcon />
-
-                <p>zicheni.io</p>
-              </div>
-            </a>
-          </div>
+        <div class="flex flex-col gap-8 w-full">
+          <ProjectsListItem projects={data.projects} />
         </div>
       </section>
+      <div></div>
     </div>
   </Body>
 </html>

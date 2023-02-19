@@ -2,6 +2,7 @@
 import ArticleBackButton from "../components/ArticleBackButton.astro";
 import BaseHead from "../components/BaseHead.astro";
 import Body from "../components/Body.astro";
+import Footer from "../components/Footer.astro";
 import LeftIcon from "../components/icons/LeftIcon.astro";
 import XIcon from "../components/icons/XIcon.astro";
 
@@ -36,7 +37,7 @@ const {
             </p>
           )
         }
-        <h1 class="text-5xl max-w-xl text-zinc-900 font-medium w-full">
+        <h1 class="text-3xl max-w-xl text-zinc-900 font-medium w-full">
           {title}
         </h1>
         <p>{description}</p>
@@ -56,5 +57,6 @@ const {
         <slot />
       </article>
     </main>
+    <Footer />
   </Body>
 </html>

@@ -17,12 +17,27 @@ export const data = {
       domain: "github.com",
     },
     {
+      name: "Pagka",
+      description: "Powerful tutoring and classes.",
+      href: "/projects/paynow-react",
+      icon: "/projects/paynow-react.jpg",
+      domain: "pagka.com",
+    },
+    {
       name: "Zicheni",
       description:
         "The Swiss pocket knife for building, running and scaling your SaaS startup.",
       href: "https://zicheni.io",
       icon: "/projects/saas-utils.png",
       domain: "zicheni.io",
+    },
+    {
+      name: "Zvese",
+      description:
+        "My little space on the internet where I design and build stuff for the world.",
+      href: "https://zvese.org",
+      icon: "/projects/saas-utils.png",
+      domain: "zvese.org",
     },
   ],
 };

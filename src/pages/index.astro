@@ -47,37 +47,38 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
             >, working to make student accommodation search easier.
           </p>
           <p>
-            On weekends I am building a startup to bring the best desks and
-            utilities to your workspace.
-          </p>
-          <p>
-            I am open to collaborations and freelance projects. You can download
-            my
-            <a
-              href="https://read.cv/kamfeskaya"
-              class="font-semibold underline text-zinc-900"
-              target="_blank"
-              rel="noopener">CV</a
-            > or get in touch
-            <a
-              href="mailto:tatendachris@gmail.com"
-              target="_blank"
-              rel="noopener"
-              class="font-semibold underline text-zinc-900"
-              >tatendachris@gmail.com</a
-            >
+            On weekends I am building a startup to help anyone create and sell
+            courses online.
           </p>
         </div>
       </div>
-      <section class="flex flex-col gap-12">
+      <section class="flex flex-col gap-8">
         <div>
           <h2 class="text-xl font-semibold text-zinc-900">Featured projects</h2>
         </div>
         <div class="flex flex-col gap-8 w-full">
-          <ProjectsListItem projects={data.projects} />
+          <ProjectsListItem projects={data.projects.slice(0, 3)} />
         </div>
       </section>
-      <div></div>
+      <section class="max-w-prose py-8">
+        <p>
+          I am open to collaborations and freelance projects. You can download
+          my
+          <a
+            href="https://read.cv/kamfeskaya"
+            class="font-semibold underline text-zinc-900"
+            target="_blank"
+            rel="noopener">CV</a
+          > or get in touch
+          <a
+            href="mailto:tatendachris@gmail.com"
+            target="_blank"
+            rel="noopener"
+            class="font-semibold underline text-zinc-900"
+            >tatendachris@gmail.com</a
+          >
+        </p>
+      </section>
     </div>
   </Body>
 </html>

@@ -5,6 +5,8 @@ import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import Body from "../components/Body.astro";
 import LinkIcon from "../components/icons/LinkIcon.astro";
+import ProjectsListItem from "../components/ProjectsListItem.astro";
+import { data } from "../lib/data";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const work = (await Astro.glob("./work/*.{md,mdx}")).sort(
@@ -21,42 +23,17 @@ const work = (await Astro.glob("./work/*.{md,mdx}")).sort(
   </head>
   <Body>
     <main class="py-12">
-      <section class="flex flex-col gap-16 max-w-5xl">
-        <div class={"flex flex-col py-16 lg:py-32"}>
-          <h1 class="text-5xl max-w-xl text-zinc-900 font-medium">
-            Top tier craft. Built with passion.
-          </h1>
-        </div>
-        <div class="grid grid-cols-1 gap-16 md:gap-32 w-full">
-          {
-            work.map((work_item) => (
-              <div
-                style={`
-                  background-image: url(${work_item.frontmatter.heroImage});
-                  background-size: cover;
-                  background-position: center;
-                  
-                `}
-                class="w-full col-span-1 overflow-hidden group border border-white bg-zinc-50 rounded-xl drop-shadow-xl aspect-square lg:aspect-video"
-              >
-                <a
-                  href={work_item.url}
-                  class="flex flex-col w-full h-full backdrop-blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 ease-in-out"
-                >
-                  <div class="p-8 flex justify-between items-center">
-                    <h3 class="text-zinc-900 font-medium px-4 py-2 bg-white rounded-full shadow-xl">
-                      {work_item.frontmatter.title}
-                    </h3>
-                    <button class="rounded-full p-2 aspect-square shadow-xl bg-white ">
-                      <LinkIcon />
-                    </button>
-                  </div>
-                </a>
-              </div>
-            ))
-          }
-        </div>
+      <section class="flex flex-col gap-24 max-w-5xl">
+        <section class="flex flex-col gap-8">
+          <div>
+            <h2 class="text-xl font-semibold text-zinc-900">
+              Personal projects
+            </h2>
+          </div>
+          <ProjectsListItem projects={data.projects} />
+        </section>
       </section>
     </main>
+    <Footer />
   </Body>
 </html>

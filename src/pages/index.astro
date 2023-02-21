@@ -46,21 +46,24 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
               class="font-medium text-zinc-900">Pagka</a
             >, working to make student accommodation search easier.
           </p>
-          <p>
-            On weekends I am building a startup to help anyone create and sell
-            courses online.
-          </p>
         </div>
       </div>
       <section class="flex flex-col gap-8">
-        <div>
-          <h2 class="text-xl font-semibold text-zinc-900">Featured projects</h2>
+        <div class="prose prose-zinc">
+          <h2 class="font-semibold text-zinc-900">Featured projects</h2>
         </div>
         <div class="flex flex-col gap-8 w-full">
           <ProjectsListItem projects={data.projects.slice(0, 3)} />
         </div>
       </section>
-      <section class="max-w-prose py-8">
+      <section class="max-w-prose prose prose-zinc py-8">
+        <h2>About</h2>
+
+        <p>
+          I angel invest in early-stage startups that I'm passionate about. If
+          I'm not working or tweeting, I'm likely skiing on the east coast,
+          going to concerts, or hanging with friends.
+        </p>
         <p>
           I am open to collaborations and freelance projects. You can download
           my

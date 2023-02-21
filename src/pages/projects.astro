@@ -26,6 +26,12 @@ const work = (await Astro.glob("./work/*.{md,mdx}")).sort(
       <section class="flex flex-col gap-24 max-w-5xl">
         <section class="flex flex-col gap-8">
           <div>
+            <h2 class="text-xl font-semibold text-zinc-900">Products</h2>
+          </div>
+          <ProjectsListItem projects={data.projects} />
+        </section>
+        <section class="flex flex-col gap-8">
+          <div>
             <h2 class="text-xl font-semibold text-zinc-900">
               Personal projects
             </h2>

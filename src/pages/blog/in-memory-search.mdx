@@ -1,0 +1,112 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "Fulltext Search on a budget"
+description: "Powerful in memory search functionality"
+pubDate: "Feb 25 2023"
+heroImage: "/placeholder-hero.jpg"
+---
+
+More often than not, you find yourself looking for something online and can't seem to find. Naturally you reach out
+to the handy search bar/box and type in some keywords, then boom, the thing shows up(or you get a "no results found").
+But thats not the important part, the important part is how can you implement this in your own product without having to
+sign up to yet another service.
+
+> Search can dramatically increase the usability of your app and overall user experience.
+
+## Building custom search with Flexsearch
+
+Flexsearch is a next-generation full text search library for the browser and node.js, which seems to not be actively
+maintained anymore(at the time of writing). Nonetheless it works pretty well, I didn't understand the latest documentation,
+it seemed to not work with the latest release. So in this build we are going to use `flexsearch@0.7.2`, at least that seemed
+to work for me.
+
+### Getting started
+
+I am going to assume you have already built your Node.js app, web-server or wherever you want to implement your search functionality.
+
+```bash
+yarn add flexsearch@0.7.2
+```
+
+Now time to import some stuff. There's a tonne of documentation about what the options do, you can read them [on their Github](https://github.com/nextapps-de/flexsearch)
+
+```js
+// Rest of your imports
+const FlexSearch = require("flexsearch");
+
+const searchIndex = FlexSearch.Index({
+  preset: "memory",
+  tokenize: "forward",
+  resolution: 5,
+});
+```
+
+Basically here is what we are going to do
+
+- Build our index
+- Define a key. Typically and ID field of our elements to index (allows us to support searching nested properties in objects)
+- Define a content where we want to search.
+
+### Building the index
+
+Have in mind we are working with an in-memory search so be careful with the amount of data you load to the index. Also pay special attention to the key, its like our `PRIMARY_KEY`.
+
+```js
+const buildIndex = (items) => {
+  items.map((item) => {
+    const content = `${item.id} ${item.name} ${item.description} ${
+      item.creator ? item.creator.username : item.author.username
+    } ${item.display_name}`;
+    const key = parseInt(item.id);
+    searchIndex.add(key, content);
+  });
+};
+```
+
+### Building the search method
+
+Okay, thats it. Now let's allow searching.
+
+```js
+const search = async (term) => {
+  if (!term) return this.items.map((item) => item.id);
+  const resultIds = await this.index.search({
+    query: term,
+    suggest: false, // When suggestion is enabled all results will be filled up (until limit, default 1000) with similar matches ordered by relevance.
+  });
+
+  return resultIds;
+};
+```
+
+Remember when we talked about the key, the search method will return an array of the keys whose content matches the search term, it does
+not return the entire object. Better have a method to get the data corresponding to the keys.
+
+### Search for some stuff
+
+```js
+// Assuming its an express app
+const route = (req, res) => {
+  const { query } = req;
+  const items = [
+    // ...some stuff for you to search, probably from some db
+  ];
+
+  // Build the index
+  buildIndex(items);
+
+  return search(query).then((resultIds) => {
+    const results = items.filter((item) => resultIds.includes(item.id));
+    return res
+      .status(200)
+      .json({
+        ...results,
+      })
+      .catch((error) => {
+        return res.status(500).json({ error });
+      });
+  });
+};
+```
+
+Well and thats it, we've built search. You can implement pagination after the getting the search results to create an even better experience.

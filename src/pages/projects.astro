@@ -9,7 +9,7 @@ import ProjectsListItem from "../components/ProjectsListItem.astro";
 import { data } from "../lib/data";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
-const work = (await Astro.glob("./work/*.{md,mdx}")).sort(
+const work = (await Astro.glob("./projects/*.{md,mdx}")).sort(
   (a, b) =>
     new Date(b.frontmatter.pubDate).valueOf() -
     new Date(a.frontmatter.pubDate).valueOf()

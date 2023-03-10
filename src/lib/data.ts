@@ -3,10 +3,11 @@ export const data = {
     {
       name: "Telescope",
       description:
-        "I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of.",
+        "The Swiss pocket knife for building, running and scaling your SaaS startup.",
       href: "https://telescope.kamfeskaya.com",
       icon: "/projects/telescope.webp",
       domain: "telescope.kamfeskaya.com",
+      type: "sparkle",
     },
     {
       name: "Paynow React",
@@ -15,29 +16,41 @@ export const data = {
       href: "/projects/paynow-react",
       icon: "/projects/paynow-react.jpg",
       domain: "github.com",
+      type: "sparkle",
     },
     {
-      name: "Pagka",
-      description: "Powerful tutoring and classes.",
-      href: "/projects/paynow-react",
+      name: "React Stopwatch",
+      description: "Reference implementation of finite state machines in React",
+      href: "https://github.com/tate2301/react-stopwatch",
       icon: "/projects/paynow-react.jpg",
-      domain: "pagka.com",
+      domain: "github.com",
+      type: "sparkle",
     },
     {
-      name: "Zicheni",
-      description:
-        "The Swiss pocket knife for building, running and scaling your SaaS startup.",
-      href: "https://zicheni.io",
-      icon: "/projects/saas-utils.png",
-      domain: "zicheni.io",
+      name: "Heamy Stack as Meta Predictor",
+      description: "Solution for Sendy Challenge #2 at UmojaHack 2021.",
+      href: "https://github.com/tate2301/heamy-model-stack",
+      icon: "/projects/paynow-react.jpg",
+      domain: "github.com",
+      type: "sparkle",
     },
+  ],
+  products: [
     {
-      name: "Zvese",
-      description:
-        "My little space on the internet where I design and build stuff for the world.",
+      name: "Zvese (WIP)",
+      description: "The leading Decentralized Exchange in Zimbabwe",
       href: "https://zvese.org",
       icon: "/projects/saas-utils.png",
       domain: "zvese.org",
+      type: "stack",
+    },
+    {
+      name: "$ZVS",
+      description: "The native cryptocurrency of the Zvese platform",
+      href: "https://zvese.org/zvs",
+      icon: "/projects/saas-utils.png",
+      domain: "zvese.org",
+      type: "stack",
     },
   ],
 };

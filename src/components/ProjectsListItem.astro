@@ -1,5 +1,8 @@
 ---
+import DocumentIcon from "./icons/DocumentIcon.astro";
 import ExternalLinkIcon from "./icons/ExternalLinkIcon.astro";
+import RectangleStack from "./icons/RectangleStack.astro";
+import Sparkles from "./icons/Sparkles.astro";
 
 export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
   projects: Array<{
@@ -7,6 +10,7 @@ export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
     href: string;
     description: string;
     domain: string;
+    type: string;
   }>;
 }
 
@@ -15,8 +19,10 @@ const { projects } = Astro.props;
 
 {
   projects.map((project) => (
-    <div class="rounded-xl relative group">
-      <div class="absolute h-full w-full" />
+    <div class="rounded-xl relative group flex items-center gap-4">
+      <div class="p-2 rounded-xl bg-white shadow-lg border">
+        {project.type === "stack" ? <RectangleStack /> : <Sparkles />}
+      </div>
       <a href={project.href} class="flex gap-8 relative">
         <div class="flex flex-col gap-2">
           <div class="group-hover:underline">

@@ -37,7 +37,7 @@ newestFirst() {
 	}
 ```
 
-```
+```ts
 oldestFirst() {
 		return this.items.sort(function (a, b) {
 			return (a.listedDate ?? a.listDate) - (b.listedDate ?? b.listDate);
@@ -45,7 +45,7 @@ oldestFirst() {
 	}
 ```
 
-```
+```ts
 cheapestFirst() {
 		return this.items.sort(function (a, b) {
 			return (a.list_price ?? a.price) - (b.list_price ?? b.price);
@@ -53,7 +53,7 @@ cheapestFirst() {
 	}
 ```
 
-```
+```ts
 paginate(page = 1, items: Array<any>, delta = 24): PaginationResults {
 		const data = {
 			total: items.length,
@@ -80,17 +80,17 @@ paginate(page = 1, items: Array<any>, delta = 24): PaginationResults {
 	}
 ```
 
-```
+```ts
 const paginationManager = new PaginationManager(
-		nfts.filter((nft) => searchResults.includes(nft.id))
-	);
+  nfts.filter((nft) => searchResults.includes(nft.id))
+);
 
 const results = paginationManager.paginate(
-			Number((page as string) ?? 1),
-			sort === "1"
-				? paginationManager.cheapestFirst()
-				: sort === "2"
-				? paginationManager.expensiveFirst()
-				: paginationManager.newestFirst()
-		)
+  Number((page as string) ?? 1),
+  sort === "1"
+    ? paginationManager.cheapestFirst()
+    : sort === "2"
+    ? paginationManager.expensiveFirst()
+    : paginationManager.newestFirst()
+);
 ```

@@ -1,0 +1,96 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "A custom pagination in NodeJS"
+description: "Building a solution to a commonly occurring problem"
+pubDate: "Feb 25 2023"
+heroImage: "/placeholder-hero.jpg"
+---
+
+```ts
+export type PaginationResults = {
+  docs: Array<any>;
+  total: number;
+  page: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  hasPrevPage: boolean;
+  next: number | null;
+  prev: number | null;
+};
+```
+
+```ts
+export class PaginationManager {
+  items: Array<any>;
+
+  constructor(items: Array<any>) {
+    this.items = items;
+  }
+}
+```
+
+```ts
+newestFirst() {
+		return this.items.sort(function (a, b) {
+			return (b.listedDate ?? b.listDate) - (a.listedDate ?? a.listDate);
+		});
+	}
+```
+
+```
+oldestFirst() {
+		return this.items.sort(function (a, b) {
+			return (a.listedDate ?? a.listDate) - (b.listedDate ?? b.listDate);
+		});
+	}
+```
+
+```
+cheapestFirst() {
+		return this.items.sort(function (a, b) {
+			return (a.list_price ?? a.price) - (b.list_price ?? b.price);
+		});
+	}
+```
+
+```
+paginate(page = 1, items: Array<any>, delta = 24): PaginationResults {
+		const data = {
+			total: items.length,
+			totalPages: 0,
+			page,
+			hasNextPage: false,
+			hasPrevPage: false,
+			next: null,
+			prev: null,
+			docs: [],
+		};
+
+		data.totalPages = Math.ceil(data.total / delta);
+
+		data.hasPrevPage = data.page > 1;
+		data.hasNextPage = data.page < data.totalPages;
+
+		data.next = data.hasNextPage ? data.page + +1 : null;
+		data.prev = data.hasPrevPage ? data.page - 1 : null;
+
+		data.docs = items.slice((page - 1) * delta, (page - 1) * delta + delta);
+
+		return data;
+	}
+```
+
+```
+const paginationManager = new PaginationManager(
+		nfts.filter((nft) => searchResults.includes(nft.id))
+	);
+
+const results = paginationManager.paginate(
+			Number((page as string) ?? 1),
+			sort === "1"
+				? paginationManager.cheapestFirst()
+				: sort === "2"
+				? paginationManager.expensiveFirst()
+				: paginationManager.newestFirst()
+		)
+```

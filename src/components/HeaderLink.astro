@@ -12,7 +12,7 @@ const isActive = isMatchedPath || isChildPathActive;
 
 <a
   href={href}
-  class={`rounded-full py-1 px-3 ${className}`}
+  class={`rounded-full gap-2 items-center py-1 px-3 hover:bg-zinc-100 transition-opacity ${className}`}
   class:list={[className, { active: isActive }]}
   {...props}
 >
@@ -20,7 +20,7 @@ const isActive = isMatchedPath || isChildPathActive;
 </a>
 <style>
   a {
-    display: inline-block;
+    display: flex;
     text-decoration: none;
   }
 </style>

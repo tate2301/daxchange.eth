@@ -1,6 +1,8 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
+import DocumentIconSmall from "./icons/DocumentIconSmall.astro";
 import MenuIcon from "./icons/MenuIcon.astro";
+import RectangleStackSmall from "./icons/RectangleStackSmall.astro";
 const { pathname } = Astro.url;
 const isHome = pathname === "/";
 ---
@@ -24,7 +26,13 @@ const isHome = pathname === "/";
     }
   </div>
   <div class="backdrop-blur flex text-sm font-medium">
-    <HeaderLink href="/projects">Projects</HeaderLink>
-    <HeaderLink href="/blog">Writing</HeaderLink>
+    <HeaderLink href="/projects">
+      <RectangleStackSmall />
+      <span>Projects</span>
+    </HeaderLink>
+    <HeaderLink href="/blog">
+      <DocumentIconSmall />
+      <span>Writing</span>
+    </HeaderLink>
   </div>
 </header>

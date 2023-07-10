@@ -1,9 +1,9 @@
 export const data = {
   projects: [
     {
-      name: "Telescope",
+      name: "Developer Index",
       description:
-        "The Swiss pocket knife for building, running and scaling your SaaS startup.",
+        "Discover and connect with developers in Zimbabwe and beyond",
       href: "https://telescope.kamfeskaya.com",
       icon: "/projects/telescope.webp",
       domain: "telescope.kamfeskaya.com",
@@ -35,6 +35,7 @@ export const data = {
       type: "sparkle",
     },
   ],
+
   products: [
     {
       name: "Zvese (WIP)",
@@ -45,9 +46,9 @@ export const data = {
       type: "stack",
     },
     {
-      name: "$ZVS",
-      description: "The native cryptocurrency of the Zvese platform",
-      href: "https://zvese.org/zvs",
+      name: "Pekugara",
+      description:
+        "A platform for finding and booking accommodation in Zimbabwe",
       icon: "/projects/saas-utils.png",
       domain: "zvese.org",
       type: "stack",

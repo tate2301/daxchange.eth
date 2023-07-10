@@ -33,23 +33,13 @@ const {
       <ArticleBackButton />
 
       <section class="flex flex-col gap-8 py-12">
-        <h1 class="text-5xl max-w-xl font-semibold text-zinc-900">
+        <h1 class="text-5xl max-w-xl font-medium text-zinc-900">
           {description}
         </h1>
         <p>
           <span class="tag">{title}</span>
         </p>
       </section>
-      {
-        heroImage && (
-          <img
-            height={360}
-            src={heroImage}
-            alt=""
-            class="w-full object-cover aspect-square lg:aspect-video rounded-xl shadow"
-          />
-        )
-      }
 
       <article
         class="w-full max-w-5xl prose prose-zinc prose-p:mb-2 prose-h1:mb-1 prose-h2:mb-1 prose-h3:mb-1 prose-h1:mt-16 prose-h2:mt-16 prose-h3:mt-16"

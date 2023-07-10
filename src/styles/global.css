@@ -65,7 +65,7 @@ h5 {
     rgba(255, 255, 255, 0) 100%
   );
 
-  @apply fixed w-screen top-0 left-0 py-4 md:py-6 lg:py-8 flex justify-center z-0;
+  @apply fixed w-screen top-0 left-0 py-4 md:py-6 lg:py-8 flex justify-center z-0 backdrop-blur-sm;
 }
 
 .serif {

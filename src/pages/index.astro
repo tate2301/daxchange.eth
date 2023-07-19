@@ -14,6 +14,13 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
       new Date(a.frontmatter.pubDate).valueOf()
   )
   .slice(0, 3);
+
+const time = new Date().toLocaleTimeString("en-US", {
+  timeZone: "Africa/Harare",
+  hour: "numeric",
+  minute: "numeric",
+  hour12: true,
+});
 ---
 
 <!DOCTYPE html>
@@ -35,9 +42,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
         </p>
         <div>
           <p class="text-sm">
-            Currently in Harare, Zimbabwe &bull; {
-              new Date().toTimeString("en-ZW", { timeZone: "Africa/Harare" })
-            }
+            Currently in Harare, Zimbabwe &bull; {time}
           </p>
           <p class="text-sm">
             &copy; {new Date().getFullYear()} Tatenda Christopher Chinyamakobvu

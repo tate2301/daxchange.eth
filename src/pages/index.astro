@@ -14,16 +14,20 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
       new Date(a.frontmatter.pubDate).valueOf()
   )
   .slice(0, 3);
-
-const time = new Date().toLocaleTimeString("en-US", {
-  timeZone: "Africa/Harare",
-  hour: "numeric",
-  minute: "numeric",
-  hour12: true,
-});
 ---
 
-<!DOCTYPE html>
+<script>
+  var time = new Date().toLocaleTimeString("en-US", {
+    timeZone: "Africa/Harare",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false,
+  });
+  var timeEl = document.getElementById("time");
+
+  if (timeEl) timeEl.innerHTML = time;
+</script>
+
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
@@ -42,27 +46,24 @@ const time = new Date().toLocaleTimeString("en-US", {
         </p>
         <div>
           <p class="text-sm">
-            Currently in Harare, Zimbabwe &bull; {time}
+            Currently in Harare, Zimbabwe &bull; <span id="time"></span>
           </p>
           <p class="text-sm">
             &copy; {new Date().getFullYear()} Tatenda Christopher Chinyamakobvu
           </p>
         </div>
       </div>
-      <img
-        src="/assets/banner.jpg"
-        alt="Tatenda Christopher Chinyamakobvu"
-        class="w-full lg:h-auto rounded-xl h-96 object-cover object-center"
-      />
+      <div class="flex">
+        <img
+          src="/projects/Snack.png"
+          alt="Tatenda Christopher Chinyamakobvu"
+          class="w-full rounded-xl h-96 object-cover object-top shadow border-2 border-white"
+        />
+      </div>
       <section class="max-w-prose prose prose-zinc p-4">
         <p>
           Currently leading the core team at The Idea Factory, a tech startup
-          accelerator based in Harare, Zimbabwe. I also run <a
-            href="https://developerindex.com"
-            target="_blank"
-            rel="noopener"
-            class="font-medium underline text-zinc-900">Developer Index</a
-          >, built to help you discover and connect with developers in Zimbabwe.
+          accelerator based in Harare, Zimbabwe.
         </p>
 
         <p>

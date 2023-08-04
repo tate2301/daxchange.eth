@@ -99,16 +99,6 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
           </button>
         </p>
       </section>
-      <section class="flex flex-col gap-4">
-        <div class="prose prose-zinc">
-          <h2 class="font-medium text-zinc-600 text-sm uppercase px-4">
-            Featured projects
-          </h2>
-        </div>
-        <div class="flex flex-col w-full">
-          <ProjectsListItem projects={data.projects} />
-        </div>
-      </section>
 
       <section class="flex flex-col gap-4 pb-32">
         <div class="prose prose-zinc">

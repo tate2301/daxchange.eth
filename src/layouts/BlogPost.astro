@@ -3,6 +3,7 @@ import ArticleBackButton from "../components/ArticleBackButton.astro";
 import BaseHead from "../components/BaseHead.astro";
 import Body from "../components/Body.astro";
 import Footer from "../components/Footer.astro";
+import LeftIcon from "../components/icons/LeftIcon.astro";
 export interface Props {
   content: {
     title: string;
@@ -24,36 +25,60 @@ const {
   </head>
 
   <Body>
-    <main class="flex flex-col gap-12 py-32">
-      <ArticleBackButton />
-      <section class="flex flex-col gap-2">
-        {
-          pubDate && (
-            <p class="text-sm">
-              Published <time>{pubDate}</time>
-            </p>
-          )
-        }
-        <h1 class="text-3xl max-w-xl text-zinc-900 font-medium w-full">
-          {title}
-        </h1>
-        <p>{description}</p>
-      </section>
-      {
-        heroImage && (
+    <main class="flex gap-16 py-32 pt-8">
+      <aside
+        class="sticky w-64 top-8 flex-shrink-0 h-full flex flex-col gap-4 items-start"
+      >
+        <button
+          onclick={"back()"}
+          class="bg-zinc-50 flex items-center gap-2 text-zinc-500 py-1 px-3 rounded-xl mb-8 hover:bg-surface-200"
+        >
+          <LeftIcon />
+          Back
+        </button>
+        <div>
           <img
-            height={360}
-            src={heroImage}
-            alt=""
-            class="w-full object-cover h-[360px] rounded-xl"
+            src={"/assets/avatar.jpg"}
+            class="w-16 h-16 rounded-xl mb-4 -rotate-6 drop-shadow border-4 border-white"
+            alt={"Tatenda Chinyamakobvu"}
           />
-        )
-      }
+          <p class="text-zinc-900 font-semibold">
+            Tatenda Christopher Chinyamakobvu
+          </p>
+          <a
+            href="https://twitter.com/halfpreneur"
+            class="text-zinc-400 text-sm">@halfpreneur</a
+          >
+        </div>
 
-      <article class="w-full max-w-5xl prose prose-zinc">
-        <slot />
-      </article>
+        <p class="text-zinc-600 text-sm mb-4">
+          Builder of things. Designer of experiences. Writer of words. Maker of
+          stuff. I'm a software engineer based in Harare, Zimbabwe.
+        </p>
+        <div>
+          <a
+            href="mailto:tatendachris@gmail.com"
+            class="px-6 py-2 rounded-xl bg-zinc-900 text-white"
+          >
+            Reach out
+          </a>
+        </div>
+      </aside>
+      <div class="flex flex-1 flex-shrink-0 flex-col gap-12 px-8">
+        <section class="flex flex-col gap-1">
+          <h1 class="text-3xl max-w-xl text-zinc-900 font-medium w-full">
+            {title}
+          </h1>
+          <p class="text-zinc-400">{description}</p>
+        </section>
+
+        <article class="max-w-xl prose prose-zinc">
+          <slot />
+        </article>
+      </div>
     </main>
-    <Footer />
+    <script is:inline>
+      const back = () => history.back();
+    </script>
   </Body>
 </html>

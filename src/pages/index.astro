@@ -6,6 +6,10 @@ import Body from "../components/Body.astro";
 import ProjectsListItem from "../components/ProjectsListItem.astro";
 import { data } from "../lib/data";
 import DocumentIcon from "../components/icons/DocumentIcon.astro";
+import ExternalLinkIcon from "../components/icons/ExternalLinkIcon.astro";
+import LinkIcon from "../components/icons/LinkIcon.astro";
+import MagicStar from "../components/icons/MagicStar.astro";
+import RightIcon from "../components/icons/RightIcon.astro";
 
 const posts = (await Astro.glob("./blog/*.{md,mdx}"))
   .sort(
@@ -13,7 +17,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
       new Date(b.frontmatter.pubDate).valueOf() -
       new Date(a.frontmatter.pubDate).valueOf()
   )
-  .slice(0, 3);
+  .slice(0, 10);
 ---
 
 <script>
@@ -35,52 +39,73 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
   <Body>
     <div class="flex flex-col gap-16">
       <div class={"w-full max-w-prose pt-16 flex flex-col gap-8 p-4"}>
-        <img
-          src={"/assets/avatar.jpg"}
-          class="w-16 h-16 rounded-xl -rotate-6 drop-shadow border-4 border-white"
-          alt={"Tatenda Christopher Chinyamakobvu"}
-        />
-        <p class="text-3xl text-zinc-900">
-          Zimbabwean fullstack developer and designer building internet stuff
-          with Typescript & Rust.
-        </p>
-        <div>
-          <p class="text-sm">
-            Currently in Harare, Zimbabwe &bull; <span id="time"></span>
+        <div class="mb-4 w-96">
+          <p class="font-medium text-zinc-900 w-96">
+            Tatenda Christopher Chinyamakobvu
           </p>
-          <p class="text-sm">
-            &copy; {new Date().getFullYear()} Tatenda Christopher Chinyamakobvu
+          <div class="mb-2">
+            <p class="text-sm text-zinc-400">
+              Currently in Harare, Zimbabwe &bull; <span id="time"></span>
+            </p>
+          </div>
+          <p class="mb-4">
+            Zimbabwean fullstack developer and designer building internet stuff
+            with Typescript & Rust.
           </p>
+          <a
+            href="mailto:tatendachris@gmail.com"
+            target="_blank"
+            rel="noopener"
+          >
+            <button
+              class="px-3 flex gap-2 items-center font-medium text-sm py-1 rounded-lg bg-zinc-900 text-white"
+            >
+              Contact me
+              <RightIcon />
+            </button>
+          </a>
         </div>
       </div>
-     
-      <section class="max-w-prose prose prose-zinc p-4">
-        <p>
-          I love building things. Something about building cool stuff, that's been designed with so much love,
-          calls me. I am at a point where I am more aware of this than ever.
-        </p>
 
-        <p>
-          Always been an engineer at heart, I am passionate about building products. I am also a big fan of open source software and I
-          try to contribute to the community as much as I can. Ocassionally I
-          write about my experiences and lessons learnt on my blog. In my free time I design and build workspace furniture.
-        </p>
-        <p>
-          I am currently looking for my next opportunity, please reach out if you are hiring. I am also open to freelance projects and collaborations.
-        </p>
-        <a href="mailto:tatendachris@gmail.com" target="_blank"
-            rel="noopener">
-          <button
-            class="px-6 py-2 rounded-lg font-semibold bg-zinc-900 text-white"
-          >
-            Contact me
-          </button>
-        </p>
+      <section class="p-4">
+        <h2 class="font-medium mb-4 text-zinc-400 tracking-normal text-sm">
+          Latest
+        </h2>
+        <div class="max-w-prose">
+          <div class="mb-8 flex flex-col gap-1 w-96">
+            <div>
+              <img
+                src="/projects/ringpro.png"
+                class="w-10 h-10 object-contain my-2"
+              />
+              <a
+                href="/projects/ringpro"
+                class="font-medium p-0.5 mb-2 text-zinc-900"
+              >
+                Introducing RingPro.
+              </a>
+            </div>
+            <p class="text-sm text-zinc-500">
+              I built RingPro to help me manage my tasks and get things done. It
+              is a todo app with a twist. It is smart and helps you focus on
+              what matters.
+            </p>
+            <a
+              href="/projects/ringpro"
+              class="px-3 flex gap-2 font-semibold items-center text-sm py-1 mt-2 rounded-lg bg-zinc-100 text-zinc-900 w-fit"
+            >
+              Learn more
+              <LinkIcon />
+            </a>
+          </div>
+        </div>
       </section>
 
       <section class="flex flex-col gap-4 pb-32">
         <div class="prose prose-zinc">
-          <h2 class="font-medium text-zinc-600 text-sm uppercase px-4">
+          <h2
+            class="font-medium mb-4 text-zinc-400 tracking-normal px-4 text-sm"
+          >
             Writing
           </h2>
         </div>
@@ -90,10 +115,12 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
               posts.map((post) => (
                 <li class="rounded-xl relative group flex items-center gap-4 hover:bg-zinc-50 p-2 px-4  max-w-screen-sm">
                   <a href={post.url} class="flex flex-col ">
-                    <h3 class="text-zinc-900 font-medium">
+                    <p class="text-zinc-900 text-base font-medium">
                       {post.frontmatter.title}
-                    </h3>
-                    <p class="text-sm">{post.frontmatter.description}</p>
+                    </p>
+                    <p class="text-sm text-zinc-400">
+                      {post.frontmatter.description}
+                    </p>
                   </a>
                 </li>
               ))

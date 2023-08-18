@@ -1,0 +1,91 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "Accessing fs and path in Next.js + Electron"
+description: "Tips on how to access fs and path in Next.js + Electron"
+pubDate: "Aug 18 2023"
+heroImage: "/assets/search-thumbnail.jpeg"
+---
+
+When developing a Next.js + Electron app, you might need to access the `fs` and `path`
+modules. There are quite a number of things that won't work if you're unable to access
+these, for example, saving a database file to the user's computer.
+
+Assuming you've already set up your Next.js + Electron app, here's how you can access
+the `fs` and `path` modules. We will be using the recommended contextBridge from electron.
+
+## Step 1: Create a preload.js file
+
+```js
+const win = new BrowserWindow({
+  // ... other options
+  webPreferences: {
+    preload: path.join(__dirname, "preload.js"),
+    nodeIntegration: true,
+  },
+});
+```
+
+## Step 2: Create a preload.js file
+
+```js
+// preload.js
+
+const { contextBridge, ipcRenderer } = require("electron");
+
+contextBridge.exposeInMainWorld("electron", {
+  fs: window.require("fs"),
+  path: window.require("path"),
+});
+```
+
+## Step 3: Access the modules in your Next.js app
+
+```js
+// pages/index.js
+useEffect(() => {
+  if (typeof window !== "undefined") {
+    const fs = window.electron.fs;
+    const path = window.electron.path;
+    // ... do something with fs and path
+  }
+}, []);
+```
+
+We're using `typeof window !== "undefined"` to check if we're rendering client side.
+This is because the `window` object is only available in the browser.
+
+## Additional notes
+
+You may want to create and export an electron API module to make it easier to access.
+For example:
+
+```js
+// electron/api.js
+const fs = window.electron.fs;
+const path = window.electron.path;
+
+const electronAPI = {
+  fs,
+  path,
+};
+
+export default electronAPI;
+```
+
+```js
+// pages/index.js
+import electronAPI from "../electron/api";
+
+// ... other code
+
+useEffect(() => {
+  if (typeof window !== "undefined") {
+    const { fs, path } = electronAPI;
+    // ... do something with fs and path
+  }
+}, []);
+```
+
+## Conclusion
+
+I just wanted to share this because I had a hard time figuring this out. I hope this helps you!

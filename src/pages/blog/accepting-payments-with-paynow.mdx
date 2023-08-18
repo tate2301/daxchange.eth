@@ -2,6 +2,198 @@
 layout: "../../layouts/BlogPost.astro"
 title: "Handling payments with Paynow"
 description: "The crash course to integrating Paynow payments in your application"
-pubDate: "Feb 25 2023"
+pubDate: "March 10 2022"
 heroImage: "/assets/search-thumbnail.jpeg"
 ---
+
+Before you can start making requests to Paynow's API, you need to get an integration ID and integration Key from Paynow. Sign in to Paynow and get integration details. [Here's](https://developers.paynow.co.zw/docs/integration_generation.html) a detailed guide on how to go about this process.
+
+## Installation
+
+Install the library using NPM or yarn
+
+```bash
+   yarn add paynow-react
+   // or
+   npm install paynow-react
+```
+
+## Set up Provider
+
+For Paynow React to work correctly, you need to set up the PaynowWrapper at the root of your application.
+
+```jsx
+import * as React from "react";
+
+// 1. import `PaynowReactWrapper` component
+import { PaynowReactWrapper } from "paynow-react";
+
+function App({ Component }) {
+  // 2. Use at the root of your app
+  const paynow_config = {
+    integration_id: "your-integration-id",
+    integration_key: "your-integration-key",
+    result_url: "default-result-url",
+    return_url: "default-return-url",
+  };
+  return (
+    <PaynowReactWrapper {...paynow_config}>
+      <Component />
+    </PaynowReactWrapper>
+  );
+}
+```
+
+## Usage
+
+Lets start by creating a simple shopping cart with a couple of items and a checkout button.
+
+```jsx
+import React, { useState } from "react";
+
+const Cart = () => {
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      title: "Annual Bleek Subscription",
+      amount: 10,
+      quantity: 1,
+      image: "",
+    },
+    {
+      id: 2,
+      title: "Annual Clinch Subscription",
+      amount: 200.1,
+      quantity: 1,
+    },
+  ]);
+
+  const checkout = () => {
+    // Do something with the items
+    console.log(items);
+  };
+
+  const removeItem = (id) => {
+    const newItems = items.filter((item) => item.id !== id);
+    setItems(newItems);
+  };
+
+  const increment = (id) => {
+    const newItems = items.map((item) => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+    setItems(newItems);
+  };
+
+  const decrement = (id) => {
+    const newItems = items.map((item) => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+    setItems(newItems);
+  };
+
+  return (
+    <div className="space-x-8">
+      {items.map((item) => (
+        <div className="space-y-4">
+          <h3 className="text-xl">{item.title}</h3>
+          <p>{item.amount}</p>
+          <p>{item.quantity}</p>
+          <button onClick={() => removeItem(item.id)}>Remove</button>
+          <p className="flex gap-4">
+            <button onClick={() => increment(item.id)}>+</button>
+            <button onClick={() => decrement(item.id)}>-</button>
+          </p>
+        </div>
+      ))}
+      <button onClick={checkout}>Checkout</button>
+    </div>
+  );
+};
+```
+
+Now we will implement the checkout functionality using Paynow React.
+
+```jsx
+// checkout.js
+import { PaynowPayment } from "paynow-react";
+
+const Checkout = ({ isOpen, callback }) => {
+  // toggle modal state. Useful for mobile payments
+  const onCloseHandler = (data) => {
+    // Do something with the data and the close the modal
+    console.log(data);
+    setIsOpen(false);
+  };
+
+  return (
+    <div>
+      <PaynowPayment
+        items={items}
+        label="Express checkout"
+        paymentMode="mobile"
+        isOpen={isOpen}
+        onClose={callback}
+      />
+    </div>
+  );
+};
+
+export default Checkout;
+```
+
+Let's update the cart component to use the checkout component.
+
+````jsx
+// cart.js
+import Checkout from "./checkout";
+// ...rest of the code
+
+const Cart = () => {
+    // ... rest of the code
+    const [isOpen, setIsOpen] = useState(true);
+    const [paymentData, setPaymentData] = useState(null);
+
+    const checkout = () => {
+        // Do something with the items
+        console.log(items);
+        setIsOpen(true);
+    };
+
+    const onCloseHandler = (data) => {
+        // Do something with the data and the close the modal
+        console.log(data);
+        setIsOpen(false);
+    };
+
+    return(
+        <>
+            <Checkout isOpen={isOpen} callback={onCloseHandler} />
+            <div className="space-x-8">
+                {items.map((item) => (
+                    <div className="space-y-4">
+                    <h3 className="text-xl">{item.title}</h3>
+                    <p>{item.amount}</p>
+                    <p>{item.quantity}</p>
+                    <button onClick={() => removeItem(item.id)}>Remove</button>
+                    <p className="flex gap-4">
+                        <button onClick={() => increment(item.id)}>+</button>
+                        <button onClick={() => decrement(item.id)}>-</button>
+                    </p>
+                    </div>
+                ))}
+                <button onClick={checkout}>Checkout</button>
+            </div>
+        </>
+    )
+}
+```
+
+Thats all you need to get started with Paynow React. You can check out the [docs](https://paynow-react.typescriptdev.xyz/) for more information on how to use the library.
+````

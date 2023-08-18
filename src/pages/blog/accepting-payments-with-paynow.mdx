@@ -150,50 +150,49 @@ export default Checkout;
 
 Let's update the cart component to use the checkout component.
 
-````jsx
+```jsx
 // cart.js
 import Checkout from "./checkout";
 // ...rest of the code
 
 const Cart = () => {
-    // ... rest of the code
-    const [isOpen, setIsOpen] = useState(true);
-    const [paymentData, setPaymentData] = useState(null);
+  // ... rest of the code
+  const [isOpen, setIsOpen] = useState(true);
+  const [paymentData, setPaymentData] = useState(null);
 
-    const checkout = () => {
-        // Do something with the items
-        console.log(items);
-        setIsOpen(true);
-    };
+  const checkout = () => {
+    // Do something with the items
+    console.log(items);
+    setIsOpen(true);
+  };
 
-    const onCloseHandler = (data) => {
-        // Do something with the data and the close the modal
-        console.log(data);
-        setIsOpen(false);
-    };
+  const onCloseHandler = (data) => {
+    // Do something with the data and the close the modal
+    console.log(data);
+    setIsOpen(false);
+  };
 
-    return(
-        <>
-            <Checkout isOpen={isOpen} callback={onCloseHandler} />
-            <div className="space-x-8">
-                {items.map((item) => (
-                    <div className="space-y-4">
-                    <h3 className="text-xl">{item.title}</h3>
-                    <p>{item.amount}</p>
-                    <p>{item.quantity}</p>
-                    <button onClick={() => removeItem(item.id)}>Remove</button>
-                    <p className="flex gap-4">
-                        <button onClick={() => increment(item.id)}>+</button>
-                        <button onClick={() => decrement(item.id)}>-</button>
-                    </p>
-                    </div>
-                ))}
-                <button onClick={checkout}>Checkout</button>
-            </div>
-        </>
-    )
-}
+  return (
+    <>
+      <Checkout isOpen={isOpen} callback={onCloseHandler} />
+      <div className="space-x-8">
+        {items.map((item) => (
+          <div className="space-y-4">
+            <h3 className="text-xl">{item.title}</h3>
+            <p>{item.amount}</p>
+            <p>{item.quantity}</p>
+            <button onClick={() => removeItem(item.id)}>Remove</button>
+            <p className="flex gap-4">
+              <button onClick={() => increment(item.id)}>+</button>
+              <button onClick={() => decrement(item.id)}>-</button>
+            </p>
+          </div>
+        ))}
+        <button onClick={checkout}>Checkout</button>
+      </div>
+    </>
+  );
+};
 ```
 
 Thats all you need to get started with Paynow React. You can check out the [docs](https://paynow-react.typescriptdev.xyz/) for more information on how to use the library.
-````

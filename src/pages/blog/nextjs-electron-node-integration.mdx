@@ -10,6 +10,12 @@ When developing a Next.js + Electron app, you might need to access the `fs` and 
 modules. There are quite a number of things that won't work if you're unable to access
 these, for example, saving a database file to the user's computer.
 
+First things, modifying your `next.config.js` file to include the `fs` and `path` modules
+will not work. This is because Next.js is a client-side framework and the `fs` and `path`
+modules are only available in Node.js, in this case Electron Isolated Context. You just need
+to enable `nodeIntegration` in your `BrowserWindow` options. Then you will provide the modules
+you need through the `contextBridge` module.
+
 Assuming you've already set up your Next.js + Electron app, here's how you can access
 the `fs` and `path` modules. We will be using the recommended contextBridge from electron.
 

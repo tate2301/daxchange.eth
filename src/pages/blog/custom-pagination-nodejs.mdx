@@ -1,8 +1,8 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "A custom pagination in NodeJS"
+title: "A custom pagination solution in Typescript"
 description: "Building a solution to a commonly occurring problem"
-pubDate: "Feb 25 2023"
+pubDate: "Apr 12 2023"
 heroImage: "/placeholder-hero.jpg"
 ---
 
@@ -10,7 +10,7 @@ Pagination is a common requirement in web development. It enables users to navig
 
 To get started, we define a PaginationManager class that takes an array of items as its constructor argument. This class serves as the main entry point for pagination operations on the array of items.
 
-```
+```ts
 export class PaginationManager {
   items: Array<any>;
 
@@ -22,7 +22,7 @@ export class PaginationManager {
 
 Next, we define some helper methods to sort the items in the array. In this example, we have implemented three sorting methods - `newestFirst()`, `oldestFirst()`, and `cheapestFirst()`. These methods sort the items based on the listed date and price.
 
-```
+```ts
 newestFirst() {
   return this.items.sort(function (a, b) {
     return (b.listedDate ?? b.listDate) - (a.listedDate ?? a.listDate);
@@ -42,7 +42,7 @@ cheapestFirst() {
 
 Finally, we define the `paginate()` method. This method takes three arguments - `page`, `items`, and `delta`. `page` is the current page number, `items` is the array of items to paginate, and `delta` is the number of items to display on each page. It returns a `PaginationResults` object that contains information about the paginated data set.
 
-```
+```ts
 paginate(page = 1, items: Array<any>, delta = 24): PaginationResults {
   const data = {
     total: items.length,
@@ -71,7 +71,7 @@ paginate(page = 1, items: Array<any>, delta = 24): PaginationResults {
 
 In the example code, we use the `PaginationManager` class to paginate an array of NFTs. We filter the NFTs based on a search query and then sort them based on the user's selected sorting option. Finally, we use the `paginate()` method to display the paginated results.
 
-```
+```ts
 const paginationManager = new PaginationManager(
   nfts.filter((nft) => searchResults.includes(nft.id))
 );
@@ -86,4 +86,8 @@ const results = paginationManager.paginate(
 );
 ```
 
-In conclusion, building a custom pagination solution in NodeJS can be a useful and rewarding exercise. By using a PaginationManager class and helper methods to sort the data, we can create a flexible and reusable pagination solution that can be customized to fit a wide range of use cases.
+By using a PaginationManager class and helper methods to sort the data,
+we can create a flexible and reusable pagination solution that can be customized to fit a wide
+range of use cases.
+
+The next steps would be integrating search functionality and adding pagination to the search results page.
